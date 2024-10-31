@@ -4,7 +4,7 @@ import time
 
 from html2image import Html2Image
 from utils import invoke_uid
-
+import os
 
 def html_parser(real_percentage, fake_percentage, file_hash, issued_for, collection_id, date):
     return f"""
