@@ -1,0 +1,154 @@
+.nav {
+  width: 100%;
+  height: 100px;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 999;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+
+    .col {
+      color: var(--primary);
+    }
+    img {
+      width: 30px;
+      margin-right: 10px;
+    }
+  }
+  .cssbuttons-io-button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 1em 1.5em 1em 1.2em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(
+      0deg,
+      rgba(77, 54, 208, 1) 0%,
+      rgba(132, 116, 254, 1) 100%
+    );
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
+    letter-spacing: 0.05em;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .cssbuttons-io-button svg {
+    margin-right: 8px;
+  }
+
+  .cssbuttons-io-button:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em #4d36d0be;
+  }
+
+  .cssbuttons-io-button:active {
+    box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
+  }
+
+  .wallet {
+    display: flex;
+    font-size: 14px;
+    gap: 10px;
+    align-items: center;
+    color: #fff;
+  }
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  li {
+    list-style: none;
+  }
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 740px) {
+  .nav {
+    padding: 20px;
+    margin-top: -20px;
+  }
+  .navlinks {
+    font-size: 12px;
+    gap: 10px;
+  }
+  .nav {
+    .wallet {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .cssbuttons-io-button {
+    font-size: 12px;
+    padding: 4px;
+  }
+  .navlinks {
+    font-size: 10px;
+    gap: 10px;
+  }
+}
+
+.alephium-connect-button .primary {
+  height: auto !important;
+  width: auto !important;
+  padding: 5px 10px;
+  display: flex;
+  width: auto;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 20px;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(
+    0deg,
+    rgba(77, 54, 208, 1) 0%,
+    rgba(132, 116, 254, 1) 100%
+  );
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
+  letter-spacing: 0.05em;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.alephium-connect-button .primary:hover {
+  background: linear-gradient(
+    0deg,
+    rgb(66, 43, 194) 0%,
+    rgb(120, 104, 245) 100%
+  ) !important;
+}
+
+.alephium-connect-button .primary > div > div::before {
+  content:url('../../assets/alephium.svg');
+  width: 13px;
+  margin-left: 10px;
+  margin-right: 15px;
+}
