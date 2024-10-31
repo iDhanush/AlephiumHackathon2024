@@ -222,7 +222,11 @@ def html_parser(real_percentage, fake_percentage, file_hash, issued_for, collect
 
 
 def html_to_image(html_string, output_file):
-    hti = Html2Image()
+    try:
+        hti = Html2Image(browser_executable='/usr/bin/chromium-browser')
+    except Exception as e:
+        print(e)
+        hti = Html2Image()
     hti.screenshot(html_str=html_string, save_as=output_file, size=(1500, 830))
 
 
