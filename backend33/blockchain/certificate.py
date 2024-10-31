@@ -1,4 +1,7 @@
+import asyncio
 import shutil
+import time
+
 from html2image import Html2Image
 from utils import invoke_uid
 
@@ -235,5 +238,6 @@ def create_certificate(real_percentage, fake_percentage, file_hash, issued_for, 
     certificate_html = html_parser(real_percentage, fake_percentage, file_hash, issued_for, collection_id, date)
     print(certificate_html)
     html_to_image(certificate_html, certificate_uid)
+    time.sleep(10)
     shutil.move(certificate_uid, 'certificates/' + certificate_uid)
     return certificate_uid
