@@ -227,7 +227,7 @@ def html_to_image(html_string, output_file):
     except Exception as e:
         print(e)
         hti = Html2Image()
-    hti.screenshot(html_str=html_string, save_as=output_file, size=(1500, 830))
+    print('------------', hti.screenshot(html_str=html_string, save_as=output_file, size=(1500, 830)))
 
 
 def create_certificate(real_percentage, fake_percentage, file_hash, issued_for, collection_id, date):
