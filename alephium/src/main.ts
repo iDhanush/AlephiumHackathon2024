@@ -408,6 +408,7 @@ app.get('/create_certificate', async (req, res) => {
     // Launch Puppeteer
     const browser = await puppeteer.launch({
       headless: true,
+      executablePath: '/usr/bin/chromium-browser',
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
