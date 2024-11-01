@@ -1,6 +1,4 @@
 import os
-import shutil
-
 import requests
 from html2image import Html2Image
 from utils import invoke_uid
