@@ -406,7 +406,11 @@ app.get('/create_certificate', async (req, res) => {
     const { realPercentage, fakePercentage, fileHash, issuedFor, collectionId, date } = req.query;
 
     // Launch Puppeteer
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+
     const page = await browser.newPage();
 
     // Generate HTML content for the certificate
