@@ -66,7 +66,7 @@ const ResultPage = () => {
     // After successful transaction, you can proceed with generating the certificate
     try {
       // Proceed with the transaction
-      const tid = 'xxxxxxt'//await sendEth(wallet);
+      const tid =  "xxxxxxxxxx" //await sendEth(wallet);
       setLoading(true);
       const res = await fetch(`${baseUrl}/mint_certificate/`, {
         method: "POST",

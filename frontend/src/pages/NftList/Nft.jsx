@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Nft.scss";
 import { useStore } from "../../context/StoreContext";
 import CERTI from "../../assets/certifi.jpeg";
-import POLY from "../../assets/polygon.png";
+import ALPH from "../../assets/alephium.svg";
 import { baseUrl } from "../../constant";
 import SpinLoader from "../../components/SpinLoader/SpinLoader";
 import { Link } from "react-router-dom";
@@ -47,7 +47,7 @@ const Nft = () => {
                 certificates?.map((cert, index) => (
                   <div key={index} className="nft-card">
                     <div className="card-top">
-                      <img src={POLY} alt="Polygon logo" />
+                      <img src={ALPH} width={32} height={32} alt="Alephium logo" />
                     </div>
                     <div className="certi-container">
                       <img
@@ -77,8 +77,8 @@ const Nft = () => {
                     <div className="card-name">
                       {cert.uri.name || "Certificate"}
                     </div>
-                    <a className="view-poly-btn" href={cert.polygon_url}>
-                      view on polygonscan
+                    <a className="view-poly-btn" href={cert.uri.image} download={true} >
+                      Download Certificate
                     </a>
                   </div>
                 ))
