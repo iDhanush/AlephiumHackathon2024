@@ -56,7 +56,47 @@ To run **Unmask**, follow the instructions below.
 ```bash
 git clone https://github.com/yourusername/unmask.git
 cd unmask
+```
+### Blockchain Node Server
+Navigate to the alephium directory:
+```bash
 cd alephium
+```
+Install dependencies:
+```bash
 npm install
+```
+Compile the contract:
+```bash
 npx @alephium/cli@latest compile
+```
+Run the main server:
+```bash
 npx ts-node src/main.ts
+```
+### Backend
+Navigate to the backend directory:
+```bash
+cd backend33
+```
+Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+Start the backend server:
+```bash
+uvicorn main:app --reload
+```
+### Frontend
+Navigate to the frontend directory:
+```bash
+cd frontend
+```
+Install frontend dependencies:
+```bash
+npm install
+```
+Run the frontend server:
+```bash
+npm run dev
+```
