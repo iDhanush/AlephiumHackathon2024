@@ -1,4 +1,7 @@
+import os
 import shutil
+
+import requests
 from html2image import Html2Image
 from utils import invoke_uid
 
@@ -223,17 +226,67 @@ def html_parser(real_percentage, fake_percentage, file_hash, issued_for, collect
 
 def html_to_image(html_string, output_file):
     try:
-        hti = Html2Image(browser_executable='/usr/bin/chromium-browser')
+        hti = Html2Image(browser_executable='/usr/bin/chromium-browser',
+                         custom_flags=[
+                             '--no-sandbox',
+                             '--headless',
+                             '--disable-gpu',
+                             '--disable-software-rasterizer',
+                             '--disable-dev-shm-usage'
+                         ]
+                         )
     except Exception as e:
         print(e)
         hti = Html2Image()
     hti.screenshot(html_str=html_string, save_as=output_file, size=(1500, 830))
 
 
+# def create_certificate(real_percentage, fake_percentage, file_hash, issued_for, collection_id, date):
+#     certificate_uid = f"{invoke_uid()}.png"
+#     certificate_html = html_parser(real_percentage, fake_percentage, file_hash, issued_for, collection_id, date)
+#     print(certificate_html)
+#     html_to_image(certificate_html, certificate_uid)
+#     shutil.move(certificate_uid, 'certificates/' + certificate_uid)
+#     return certificate_uid
+
+
 def create_certificate(real_percentage, fake_percentage, file_hash, issued_for, collection_id, date):
+    # Define the Node.js server endpoint
+    url = "http://localhost:3000/create_certificate"  # Adjust the port if necessary
+
+    # Set up the query parameters
+    params = {
+        'realPercentage': real_percentage,
+        'fakePercentage': fake_percentage,
+        'fileHash': file_hash,
+        'issuedFor': issued_for,
+        'collectionId': collection_id,
+        'date': date
+    }
+
+    # Send the request to the Node.js server
+    response = requests.get(url, params=params)
+    response.raise_for_status()  # Raise an error for bad status codes
+
+    # Parse the response JSON
+    data = response.json()
+    file_path = data.get('filePath')
+
+    # Fetch the image from the file path on the Node.js server
+    image_url = f"http://localhost:3000{file_path}"  # Adjust URL based on server config
+    image_response = requests.get(image_url)
+    image_response.raise_for_status()
+
+    # Define the save path in the Python server
+    os.makedirs('certificates', exist_ok=True)
     certificate_uid = f"{invoke_uid()}.png"
-    certificate_html = html_parser(real_percentage, fake_percentage, file_hash, issued_for, collection_id, date)
-    print(certificate_html)
-    html_to_image(certificate_html, certificate_uid)
-    shutil.move(certificate_uid, 'certificates/' + certificate_uid)
+    save_path = os.path.join('certificates', certificate_uid)
+
+    # Write the image to disk
+    with open(save_path, 'wb') as f:
+        f.write(image_response.content)
+
+    print("Certificate saved successfully at:", save_path)
+
+
     return certificate_uid
