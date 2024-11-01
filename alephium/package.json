@@ -18,7 +18,8 @@
     "@alephium/web3-test": "1.8.4",
     "@alephium/web3-wallet": "1.8.4",
     "cors": "^2.8.5",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "puppeteer": "^23.6.1"
   },
   "devDependencies": {
     "@types/node": "^16.18.23",
