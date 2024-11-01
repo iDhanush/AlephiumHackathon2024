@@ -38,7 +38,7 @@ async def mint_certificate(post_data: PostData):
         file_hash,
         client_address,
         contract_address, datetime.datetime.now().date())
-    certificate_url = 'http://localhost:8000/certificate/' + certificate_id
+    certificate_url = f'{Var.base_url}/certificate/' + certificate_id
     uri = {
         "certificate_url": certificate_url,
     }
