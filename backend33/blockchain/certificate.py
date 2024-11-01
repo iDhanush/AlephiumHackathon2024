@@ -286,5 +286,4 @@ def create_certificate(real_percentage, fake_percentage, file_hash, issued_for, 
 
     print("Certificate saved successfully at:", save_path)
 
-
     return certificate_uid

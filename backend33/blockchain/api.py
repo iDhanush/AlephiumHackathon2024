@@ -57,5 +57,7 @@ async def get_user_nfts(user_address: str):
     nfts = requests.get(f'{Var.bchainrl}/list_nft?address={user_address}')
     nfts = nfts.json()
     print(nfts['nfts'])
-    nfts = [{'nfts': [{'uri': {'image': nft['tokenUri']}, 'polygon_url': '#'}]} for nft in nfts['nfts']]
-    return nfts[0]
+    his_nfts = []
+    for nft in nfts['nfts']:
+        his_nfts.append({'uri': {'image': nft['tokenUri'], 'polygon_url': '#'}})
+        return {'nfts': his_nfts}
