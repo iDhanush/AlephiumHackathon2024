@@ -54,7 +54,7 @@ To run **Unmask**, follow the instructions below.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/unmask.git
+git clone https://github.com/iDhanush/AlephiumHackathon2024.git
 cd unmask
 ```
 ### Blockchain Node Server
