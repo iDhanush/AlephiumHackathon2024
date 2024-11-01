@@ -60,4 +60,4 @@ async def get_user_nfts(user_address: str):
     his_nfts = []
     for nft in nfts['nfts']:
         his_nfts.append({'uri': {'image': nft['tokenUri'], 'polygon_url': '#'}})
-        return {'nfts': his_nfts}
+    return {'nfts': his_nfts}
